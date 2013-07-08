@@ -5452,11 +5452,17 @@ table.grid th {
   font-weight: normal;
   font-style: normal;
 }
+body {
+  background: #eeeeee;
+}
 body > header {
   margin-bottom: 22px;
 }
 body > header #toolbar + nav {
   margin-top: 50px;
+}
+.content {
+  background: #fff;
 }
 .portlet .portletHeader {
   font-size: 24px;
