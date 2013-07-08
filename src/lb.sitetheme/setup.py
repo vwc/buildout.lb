@@ -27,6 +27,8 @@ setup(name='lb.sitetheme',
           'setuptools',
           'plone.app.theming',
           'plone.app.themingplugins',
+          'plone.app.toolbar',
+          'plone.app.widgets',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
@@ -35,6 +37,4 @@ setup(name='lb.sitetheme',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
-      paster_plugins=["ZopeSkel"],
       )

@@ -15,6 +15,9 @@ body > header {
     font-size: @font-size-base * 1.5;
     padding: @line-height-computed / 2;
     border-bottom: 1px solid @gray-light;
+    &.hiddenStructure {
+      display: none;
+    }
   }
   .portletItem {
     padding: @padding-large-vertical;
@@ -23,6 +26,10 @@ body > header {
     padding: @padding-large-vertical;
     font-size: @font-size-small;
   }
+}
+
+ul.navTree {
+  .nav();
 }
 
 // Example styles for listings (e.g. folder summary view)
