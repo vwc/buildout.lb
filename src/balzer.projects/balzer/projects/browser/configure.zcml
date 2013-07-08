@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    
+   <!-- <browser:page
+        name="view"
+        for="..content.projectlist.IProjectList"
+        template="projectlist_templates/projectlist.pt"
+        permission="zope2.View"
+        /> -->
+    
+   <!-- <browser:page
+        name="view"
+        for="..content.project.IProject"
+        template="project_templates/project.pt"
+        permission="zope2.View"
+        /> -->
+
+
+</configure>
+

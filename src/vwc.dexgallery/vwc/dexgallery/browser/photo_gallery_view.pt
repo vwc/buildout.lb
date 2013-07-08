@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+  <metal:js fill-slot="javascript_head_slot">
+    <script type="text/javascript">
+$(function() {
+  $('.scrollable').scrollable({mousewheel:true});
+});
+    </script>
+    <style type="text/css">
+.scrollable { position: relative; overflow-x: auto; overflow-y: hidden; width: 350px; height: 320px;}
+.scrollable .items { white-space: nowrap; position: absolute; }
+.scrollable .items div { display: inline; }
+    </style>
+  </metal:js>
+</head>
+
+<body>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core metal:define-macro="content-core">
+
+  <h2>Recent Photos</h2>
+  <div class="scrollable">
+    <div class="items">
+      <div tal:repeat="photo python:context.portal_catalog(portal_type='vwc.dexgallery.photo', sort_on='created', sort_order='descending', sort_limit=10)[:10]">
+        <a tal:attributes="href photo/getURL">
+          <img tal:define="photo_obj photo/getObject;
+                           scale photo_obj/@@images"
+               tal:replace="structure python:scale.scale('image', width=1200, height=300, direction='keep').tag()"/>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="photos-map" style="width: 500px; float: right; dosplay:none">
+    <style type="text/css">
+.googleMapView img { max-width: none !important; }
+.googleMapPane { width: 450px; height: 350px; overflow: hidden; }
+</style>
+    <h2>By Location</h2>
+    <div class="googleMapView" style="width: 500px; height: 350px; display:none"
+         tal:define="view context/@@maps_googlemaps_view">
+      <tal:markers metal:use-macro="context/maps_map/macros/markers"/>
+    </div>
+  </div>
+  
+  <tal:tags tal:define="tag_counts python:context.portal_catalog.Indexes['photo_tags'].uniqueValues(withLengths=True);
+                        tags python:[tag for tag, count in sorted(tag_counts, key = lambda x: x[1], reverse=True)]">
+    <h2>By Tag</h2>
+    <tal:tag tal:repeat="tag tags">
+      <div class="photo-tag"
+           tal:content="tag"/>
+      <div tal:define="photos python:context.portal_catalog(portal_type='example.dexgallery.photo', photo_tags=tag, sort_on='created', sort_order='descending', sort_limit=3)[:3]">
+        <a tal:repeat="photo photos"
+           tal:attributes="href photo/getURL">
+          <img tal:define="photo_obj photo/getObject;
+                           scale photo_obj/@@images"
+               tal:replace="structure python:scale.scale('image', width=64, height=64, direction='down').tag()"/>
+        </a>
+      </div>
+    </tal:tag>
+  </tal:tags>
+
+  <div style="clear:both;"></div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>

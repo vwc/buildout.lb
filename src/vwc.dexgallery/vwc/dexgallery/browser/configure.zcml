@@ -1,0 +1,59 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+  
+  <browser:page
+    name="view"
+    for="vwc.dexgallery.content.photo.IPhoto"
+    template="photo_view.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="view"
+    for="vwc.dexgallery.content.photogallery.IPhotoGallery"
+    template="photo_gallery_view.pt"
+    permission="zope2.View"
+    />
+
+  <!-- Maps integration for behavior -->
+  <browser:page
+      for="..behavior.geolocation.IGeolocatableMarker"
+      name="maps_googlemaps_view"
+      class="Products.Maps.browser.map.DefaultMapView"
+      permission="zope2.View"
+      allowed_interface="Products.Maps.interfaces.map.IMapView"
+      />
+  <adapter
+      for="..behavior.geolocation.IGeolocatableMarker"
+      provides="Products.Maps.interfaces.IMap"
+      factory=".maps.GeolocatableMap"
+      />
+  <adapter
+      for="..behavior.geolocation.IGeolocatableMarker"
+      provides="Products.Maps.interfaces.marker.IMarker"
+      factory=".maps.GeolocatableMarker"
+      />
+
+  <!-- Maps integration for photo gallery view -->
+  <adapter
+      for="..content.photogallery.IPhotoGallery"
+      provides="Products.Maps.interfaces.IMap"
+      factory="Products.Maps.adapters.FolderMap"
+      />
+  <browser:page
+      for="..content.photogallery.IPhotoGallery"
+      name="maps_googlemaps_enabled_view"
+      class=".maps.PhotoGalleryMapView"
+      permission="zope.Public"
+      allowed_interface="Products.Maps.interfaces.map.IMapEnabledView"
+      />
+  <browser:page
+      for="..content.photogallery.IPhotoGallery"
+      name="maps_googlemaps_view"
+      class=".maps.PhotoGalleryMapView"
+      permission="zope.Public"
+      allowed_interface="Products.Maps.interfaces.map.IMapView"
+      />
+
+</configure>

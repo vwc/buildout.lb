@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<body>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core metal:define-macro="content-core">
+
+    <img tal:replace="structure context/@@images/image" />
+    
+    <p tal:replace="structure context/caption/output" />
+    
+    <div class="photo-tags"
+         tal:define="tag_relations context/tags|nothing;"
+         tal:condition="tag_relations">
+        Tags:
+        <ul>
+            <li tal:repeat="tag_relation tag_relations"
+                tal:condition="not:tag_relation/isBroken|nothing">
+                <a tal:define="tag_obj nocall:tag_relation/to_object"
+                    tal:content="tag_obj/Title"
+                    tal:attributes="href tag_obj/absolute_url;" />
+            </li>
+        </ul>
+    </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>

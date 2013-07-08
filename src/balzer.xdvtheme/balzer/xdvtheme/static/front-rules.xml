@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/xdv"
+    xmlns:css="http://namespaces.plone.org/xdv+css">
+
+    <!-- Head: title -->
+    <replace theme="/html/head/title" content="/html/head/title" />
+
+    <!-- Base tag -->
+    <replace theme="/html/head/base" content="/html/head/base" />
+
+    <!-- Drop styles in the head - these are added back by including them from Plone -->
+    <drop theme="/html/head/link" />
+    <drop theme="/html/head/style" />
+
+    <!-- entry -->
+    <copy content='//*[@id="portal-personaltools-wrapper"]' theme='//*[@id="entry"]' />
+
+    <!-- top-nav -->
+    <copy content='//*[@id="portal-globalnav"]/li' theme='//*[@id="top-nav"]/ul' />
+
+    <!-- logo-nav -->
+    <copy content='//*[@id="portal-column-one"]/div' theme='//*[@id="logo-nav"]' />
+
+    <!-- Pull in Plone CSS -->
+    <append theme="/html/head" content="/html/head/link | /html/head/style " />
+
+    <append content='/html/head/style' theme='/html/head' />
+    <append content='/html/head/script' theme='/html/head' /> 
+
+</rules>
+

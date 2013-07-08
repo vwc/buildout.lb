@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/xdv"
+    xmlns:css="http://namespaces.plone.org/xdv+css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    
+        <!-- <xsl:strip-space elements="*" /> -->
+        <xsl:output
+            doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+            doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+    
+    
+    <theme css:if-content="body.section-front-page" href="front.html"/>
+    
+    <!-- Rules applying to a standard Plone web page -->
+    <rules css:if-content="#visual-portal-wrapper">
+    
+    <theme href="index.html" />
+    
+    <!-- Head: title -->
+    <replace theme="/html/head/title" content="/html/head/title" />
+
+    <!-- Base tag -->
+    <replace theme="/html/head/base" content="/html/head/base" />
+
+    <!-- Drop styles in the head - these are added back by including them from Plone -->
+    <drop theme="/html/head/link" />
+    <drop theme="/html/head/style" />
+    <drop theme="/html/head/script" />
+
+    <!-- Pull in Plone CSS -->
+    <append theme="/html/head" content="/html/head/link | /html/head/style " />
+    <!-- Pull in Plone Styles -->
+    <append theme="/html/head" content="/html/head/script" />
+    
+    <append theme="/html/head">
+        <link rel="shortcut icon" href="/++resource++balzer.xdvtheme/images/favicon.ico" type="image/x-icon" />
+    </append>
+    
+    <!-- Body -->
+        <prepend content="/html/body/@class" theme="/html/body" />
+        <prepend content="/html/body/@id"    theme="/html/body" />
+        <prepend content="/html/body/@dir"   theme="/html/body" />
+    
+    <!-- Logo (link target) -->
+    <prepend content='//*[@id="portal-logo"]/@href' css:theme="#logo" />
+    <!-- Copy the edit bar -->
+	<replace content='//*[@id="edit-bar"]'	theme='//*[@id="editbar"]' />
+    <!-- top-nav -->
+    <copy content='//*[@id="portal-globalnav"]' theme='//*[@id="top-nav"]' />
+
+    <!-- leftbar -->
+    <copy content='//*[@id="portal-column-one"]/div' theme='//*[@id="left-nav"]' />
+
+    <!-- content -->
+    <replace content='//*[@id="content"]' theme='//*[@id="content"]' />
+
+    <!-- rightbar -->
+    <copy content='//*[@id="portal-column-two"]/div' theme='//*[@id="r-content-news"]' />
+
+    <drop content='//*[@class="portletTopLeft"]' />
+	<drop content='//*[@class="portletTopRight"]' />
+	<drop content='//*[@class="portletBottomLeft"]' />
+	<drop content='//*[@class="portletBottomRight"]' />
+	
+	<!-- Remove the Portlet Footer - we don't use it -->
+	<drop content='//*[@class="portletFooter"]' />
+	
+	<append content="//*[@id='kss-spinner']" theme="/html/body" />
+
+    </rules>
+
+</rules>
+

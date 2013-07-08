@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="vwc.dexgallery">
+
+    <!-- Grok schemata -->
+    <grok:grok package="." />
+
+    <plone:behavior
+          title="Geolocatable"
+          description="Makes it possible to mark an item with a geographic location."
+          provides=".geolocation.IGeolocatable"
+          factory=".geolocation.Geolocatable"
+          marker=".geolocation.IGeolocatableMarker"
+          for="plone.dexterity.interfaces.IDexterityContent"
+          />
+
+</configure>
+
