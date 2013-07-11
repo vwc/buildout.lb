@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2013-06-02 13:15+0000\n"
+"PO-Revision-Date: 2013-07-11 10:38+0100\n"
+"Last-Translator: Christoph Boehner <cb@vorwaerts-werbung.de>\n"
+"Language-Team: VW Language Team <hallo@vorwaerts-werbung.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: balzer.projects\n"
+
+#: ./../profiles/default/types/balzer.projects.projectlist.xml
+msgid "A folderish content type listing reference projects."
+msgstr "Ordner für Referenezprojekte"
+
+#: ./../profiles/default/types/balzer.projects.project.xml
+msgid "A reference project."
+msgstr "Referenzprojekt"
+
+#: ./../content/project.py:21
+msgid "Enter a summary of the project goals."
+msgstr "Biite geben Sie eine kurze Zusammenfassung des Inhaltes ein."
+
+#: ./../content/project.py:26
+msgid "Image"
+msgstr "Bild"
+
+#: ./../profiles/default/types/balzer.projects.project.xml
+msgid "Project"
+msgstr "Projekt"
+
+#: ./../profiles/default/types/balzer.projects.projectlist.xml
+msgid "Project List"
+msgstr "Projektliste"
+
+#: ./../content/project.py:20
+msgid "Project Summary"
+msgstr "ZUsammenfassung des Projekts"
+
+#: ./../content/project.py:27
+msgid "Upload an image that will be shown in listings and search results."
+msgstr "Laden Sie hier ein Bild hoch, dass in Auflistungen gezeigt werden soll"
+
